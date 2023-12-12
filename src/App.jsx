@@ -6,6 +6,7 @@ import { HomePage } from "./components/HomePage";
 import { ArticlesContainer } from "./components/ArticlesPage";
 import { ArticlePage } from "./components/ArticlePage";
 import { UserProvider } from "./contexts/UserContext";
+import { ProfilePage } from "./components/ProfilePage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" element={<HomePage />}></Route>
           <Route path="/articles" element={<ArticlesContainer />}></Route>
           <Route path="/articles/:articleId" element={<ArticlePage />}></Route>
+          <Route path="/profile/:username" element={<ProfilePage />}></Route>
         </Routes>
       </BrowserRouter>
   );
