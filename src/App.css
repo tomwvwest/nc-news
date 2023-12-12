@@ -5,12 +5,14 @@
   font-family: Lato;
   margin: 0;
   padding: 0;
+  color:black;
 }
 
 .isLoading{
   padding-top: 30vh;
   text-align: center;
   padding-bottom: 50vh;
+  opacity: 0.7;
 }
 .back-arrow{
   display:flex;
@@ -20,6 +22,7 @@
 }
 .back-arrow:hover{
   background-color:#2b2a4c50;
+  cursor:pointer;
 }
 
 .header-container{
@@ -48,6 +51,7 @@
 .sub-header{
   font-size: 20px;
   font-style: italic;
+  color: #B31312;
 }
 
 /* ------------main-container-------------- */
@@ -56,7 +60,7 @@
   background-color:#efe7e5;
   display: flex;
   justify-content: center;
-  height: fit-content;
+  min-height: 85vh;
 }
 
 .content-container{
@@ -97,7 +101,7 @@
   opacity: 0.6;
 }
 
-.main-content-bottom{
+.content-bottom{
   display: flex;
   flex-direction: column;
 }
@@ -185,3 +189,40 @@
   text-align:center;
   flex-grow: 1;
 }
+
+/* -------------article pare ------------ */
+
+.article-page-topic{
+
+}
+.article-page-image{
+  max-width: 700px;
+}
+
+.article-page-title{
+  font-size: 1.9rem;
+  margin-bottom: 0.2rem;
+  margin-left: 0.3rem;
+}
+
+.article-page-author{
+  font-size: 1.1rem;
+  margin-left: 0.4rem;
+  margin-bottom: 0.1rem;
+}
+.article-page-date{
+  opacity: 0.6
+}
+
+.article-page-topic{
+  font-size: 1.1rem;
+  margin-left: 0.4rem;
+  margin-bottom: 1rem;
+  opacity: 0.6;
+  font-style: italic;
+}
+.article-page-body{
+  padding: 0.5rem;
+}
+
+
