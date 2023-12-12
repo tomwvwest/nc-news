@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router";
-import { getArticles } from "./api";
+import { getArticles, getUsers } from "./api";
 
 export const findTopArticles = () => {
   return getArticles().then((res) => {
@@ -22,4 +22,11 @@ export const convertToDate = (str) => {
 export const capitaliseFirstLetter = (str) => {
   return str[0].toUpperCase() + str.slice(1);
 };
+
+export const getProfilePictureByName = (name) => {
+  return getUsers().then(users => {
+    const chosenUser = users.find(user => user.username === name)
+    return chosenUser.avatar_url
+  })
+}
 

@@ -15,3 +15,19 @@ export const getArticleById = (id) => {
       return data.article;
     });
 }
+
+export const getCommentsById = (id) => {
+  return axios
+    .get(`https://its-the-news-2.onrender.com/api/articles/${id}/comments`)
+    .then(({ data }) => {
+      return data.comments;
+    });
+}
+
+export const getUsers = () => {
+  return axios
+    .get(`https://its-the-news-2.onrender.com/api/users`)
+    .then(({ data }) => {
+      return data.users;
+    });
+}
