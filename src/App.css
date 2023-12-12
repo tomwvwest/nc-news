@@ -279,3 +279,18 @@ hr{
 .show-comments{
   transform: rotate(270deg);
 }
+
+.vote-button{
+  margin: 0.8rem 0 0.3rem 0.5rem;
+  background-color: #f2f4f6;
+  width: 3rem;
+  height: 2rem;
+  border: 1px solid black;
+  border-radius: 100rem;;
+}
+.vote-button:hover{
+  cursor:pointer;
+}
+.true-vote-button{
+  background-color: rgb(93, 213, 253);
+}
