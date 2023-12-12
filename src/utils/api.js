@@ -31,3 +31,18 @@ export const getUsers = () => {
       return data.users;
     });
 }
+
+export const getUserByName = (name) => {
+  return getUsers().then(users => {
+    const chosenUser = users.find(user => user.username === name)
+    return chosenUser
+  })
+}
+
+export const patchArticleVotesById = (id, num) => {
+  return axios
+    .patch(`https://its-the-news-2.onrender.com/api/articles/${id}`, {inc_votes: num})
+    .then(({ data }) => {
+      console.log(data);
+    });
+}
