@@ -221,6 +221,7 @@
 .comments-title{
   margin-left: 0.4rem;
   margin-bottom: 0.5rem;
+  display: flex;
 }
 
 hr{
@@ -262,3 +263,19 @@ hr{
   opacity: 0.5;
 }
 
+.comments-drop-down{
+  border-radius: 10rem;
+  margin-left: 0.3rem;
+  transition: 0.15s;
+}
+.comments-drop-down:hover{
+  background-color: #cfd1d2;
+  cursor: pointer;
+}
+
+.hide-comments{
+  transform: rotate(180deg);
+}
+.show-comments{
+  transform: rotate(270deg);
+}
