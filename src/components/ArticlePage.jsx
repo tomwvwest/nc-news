@@ -33,20 +33,15 @@ export const ArticlePage = () => {
 
   const handleVote = () => {
     setIsArticleVoted(!isArticleVoted);
+    const incrementBy = isArticleVoted ? -1 : 1;
+    setArticleVotes((current) => current + incrementBy);
 
-    if (!isArticleVoted) {
-      patchArticleVotesById(article.article_id, 1)
-        .then(() => {
-          return getArticleById(article.article_id);
-        })
-        .then((updatedArticle) => setArticleVotes(updatedArticle.votes))
-        .catch((resErr) => setErr(resErr));
-    } else {
-      patchArticleVotesById(article.article_id, -1)
-        .then(() => getArticleById(article.article_id))
-        .then((updatedArticle) => setArticleVotes(updatedArticle.votes))
-        .catch((resErr) => setErr(resErr));;
-    }
+    patchArticleVotesById(article.article_id, incrementBy)
+      .then(() => {
+        return getArticleById(article.article_id);
+      })
+      .then((updatedArticle) => setArticleVotes(updatedArticle.votes))
+      .catch((resErr) => setErr(resErr));
   };
 
   if (isLoading) {
@@ -57,13 +52,8 @@ export const ArticlePage = () => {
     );
   }
 
-  if(err){
-    console.log(err)
-    return (
-      <div className="main-body">
-        <h1 className="isLoading">Something went wrong...</h1>
-      </div>
-    );
+  if (err) {
+    console.log(err);
   }
 
   return (
@@ -72,7 +62,9 @@ export const ArticlePage = () => {
         <div className="content-top">
           <BackButton />
           <div className="article-votes-section">
-            <p className="article-votes">({articleVotes})</p>
+            <p className="article-votes">
+              {err ? "ERROR" : `(${articleVotes})`}
+            </p>
             <button
               className={`vote-button ${
                 isArticleVoted ? "true-vote-button" : "false-vote-button"
