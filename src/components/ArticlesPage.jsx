@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getArticles } from "../utils/api";
 import { convertToDate } from "../utils/functions";
+import { SecondaryArticleContainer } from "./SecondaryArticleContainer";
 
 export const ArticlesContainer = () => {
   const [articles, setArticles] = useState('');
@@ -16,16 +17,16 @@ export const ArticlesContainer = () => {
 
   if (isLoading) {
     return (
-      <div className="main-container">
+      <div className="main-body">
         <h1 className="isLoading">Loading ...</h1>
       </div>
     );
   }
 
   return (
-    <div className="main-container">
-      <div className="main-content-container">
-        <div className="main-content-top main-content-top-articles">
+    <div className="main-body">
+      <div className="content-container">
+        <div className="content-top">
           <Link to="/">
             <div className="back-arrow">
               <img src="../../images/back-arrow.png" alt="" />
@@ -34,25 +35,7 @@ export const ArticlesContainer = () => {
           <h2 className="content-header articles-content-header">Articles</h2>
         </div>
         <div className="main-content-bottom">
-          {articles.map(article => {
-            return (
-              <div className="secondary-article" key={article.article_id}>
-                <div className="secondary-left-side">
-                  <img
-                    src={article.article_img_url}
-                    className="secondary-article-image"
-                  />
-                </div>
-                <div className="secondary-right-side">
-                  <p className="secondary-title">{article.title}</p>
-                  <p className="secondary-author">{article.author}</p>
-                  <p className="secondary-date">
-                    {convertToDate(article.created_at)}
-                  </p>
-                </div>
-              </div>
-            );
-          })}
+          <SecondaryArticleContainer secondaryArticles={articles}/>
         </div>
       </div>
     </div>

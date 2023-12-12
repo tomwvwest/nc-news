@@ -12,6 +12,15 @@
   text-align: center;
   padding-bottom: 50vh;
 }
+.back-arrow{
+  display:flex;
+  border-radius: 200rem;
+  padding: 0.1rem;
+  transition: 0.1s;
+}
+.back-arrow:hover{
+  background-color:#2b2a4c50;
+}
 
 .header-container{
   position: fixed;
@@ -42,7 +51,7 @@
 }
 
 /* ------------main-container-------------- */
-.main-container{
+.main-body{
   padding: 5rem 0 2rem 0;
   background-color:#efe7e5;
   display: flex;
@@ -50,7 +59,7 @@
   height: fit-content;
 }
 
-.main-content-container{
+.content-container{
   margin: 1rem;
   padding: 0 0.5rem;
   border: 2px #2B2A4C solid;
@@ -61,7 +70,7 @@
   max-width: 1200px;
   width: 90%
 }
-.main-content-top{
+.content-top{
   display: flex;
   justify-content: space-between;
   align-items: center;
