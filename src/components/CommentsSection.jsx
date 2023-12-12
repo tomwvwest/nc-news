@@ -11,12 +11,13 @@ export const CommentsSection = ({ comments }) => {
   return (
     <>
       <h3 className="comments-title">
-        Comments{" "}
-        <img
+        Comments ({comments.length}){" "}
+        {comments.length?<img
           src="../../images/back-arrow.png"
           className={`comments-drop-down ${showComments? 'show-comments': 'hide-comments'}`}
           onClick={handleDropDown}
-        />
+        />: <p className="no-comments-message">No comments</p>}
+        
       </h3>
       {showComments? <div className="comments-section">
         {comments.map((comment) => {

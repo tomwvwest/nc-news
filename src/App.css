@@ -290,6 +290,13 @@ hr {
 .show-comments {
   transform: rotate(270deg);
 }
+.no-comments-message{
+  margin-left: 0.7rem;
+  font-weight: 400;
+  font-size: 1rem;
+  align-self: end;
+  opacity: 0.6;
+}
 .comment-votes-section,
 .article-votes-section {
   display: flex;
