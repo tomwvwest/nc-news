@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getArticleById, getCommentsById } from "../utils/api";
+import {
+  getArticleById,
+  getCommentsById,
+  patchArticleVotesById,
+} from "../utils/api";
 import { capitaliseFirstLetter, convertToDate } from "../utils/functions";
 import { BackButton } from "./BackButton";
 import { CommentsSection } from "./CommentsSection";
@@ -11,11 +15,14 @@ export const ArticlePage = () => {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isArticleVoted, setIsArticleVoted] = useState(false);
+  const [articleVotes, setArticleVotes] = useState("");
+  const [err, setErr] = useState(null);
 
   useEffect(() => {
     getArticleById(articleId)
-      .then((data) => {
-        setArticle(data);
+      .then((article) => {
+        setArticle(article);
+        setArticleVotes(article.votes);
         return getCommentsById(articleId);
       })
       .then((data) => {
@@ -26,6 +33,20 @@ export const ArticlePage = () => {
 
   const handleVote = () => {
     setIsArticleVoted(!isArticleVoted);
+
+    if (!isArticleVoted) {
+      patchArticleVotesById(article.article_id, 1)
+        .then(() => {
+          return getArticleById(article.article_id);
+        })
+        .then((updatedArticle) => setArticleVotes(updatedArticle.votes))
+        .catch((resErr) => setErr(resErr));
+    } else {
+      patchArticleVotesById(article.article_id, -1)
+        .then(() => getArticleById(article.article_id))
+        .then((updatedArticle) => setArticleVotes(updatedArticle.votes))
+        .catch((resErr) => setErr(resErr));;
+    }
   };
 
   if (isLoading) {
@@ -36,13 +57,22 @@ export const ArticlePage = () => {
     );
   }
 
+  if(err){
+    console.log(err)
+    return (
+      <div className="main-body">
+        <h1 className="isLoading">Something went wrong...</h1>
+      </div>
+    );
+  }
+
   return (
     <div className="main-body">
       <div className="content-container">
         <div className="content-top">
           <BackButton />
           <div className="article-votes-section">
-            <p className="article-votes">({article.votes})</p>
+            <p className="article-votes">({articleVotes})</p>
             <button
               className={`vote-button ${
                 isArticleVoted ? "true-vote-button" : "false-vote-button"

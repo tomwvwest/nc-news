@@ -25,22 +25,7 @@ export const CommentContainer = ({ comment }) => {
       </div>
       <div className="comment-bottom-section">
         <p className="comment-body">{comment.body}</p>
-        <div className="comment-votes-section">
-          <button
-            className={`vote-button comment-vote-button ${
-              isVoted ? "true-vote-button" : "false-vote-button"
-            }`}
-            onClick={handleVote}
-          >
-            <img
-              src="../../images/thumbs-up.png"
-              className={`thumbs-up ${
-                isVoted ? "true-thumbs-up" : "false-thumbs-up"
-              }`}
-            />
-          </button>
-          <p className="comment-votes">({voteNumber})</p>
-        </div>
+        
       </div>
     </div>
   );
