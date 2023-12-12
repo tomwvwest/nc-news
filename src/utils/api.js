@@ -31,3 +31,10 @@ export const getUsers = () => {
       return data.users;
     });
 }
+
+export const getUserByName = (name) => {
+  return getUsers().then(users => {
+    const chosenUser = users.find(user => user.username === name)
+    return chosenUser
+  })
+}
