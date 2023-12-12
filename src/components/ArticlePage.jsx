@@ -6,7 +6,7 @@ import { BackButton } from "./BackButton";
 
 export const ArticlePage = () => {
   const { articleId } = useParams();
-  const [article, setArticle] = useState("");
+  const [article, setArticle] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
