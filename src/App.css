@@ -279,18 +279,31 @@ hr{
 .show-comments{
   transform: rotate(270deg);
 }
-
+.comment-votes-section, .article-votes-section{
+  display:flex;
+  align-items: center;
+}
 .vote-button{
-  margin: 0.8rem 0 0.3rem 0.5rem;
   background-color: #f2f4f6;
   width: 3rem;
   height: 2rem;
   border: 1px solid black;
   border-radius: 100rem;;
+  transition: 0.15s;
+}
+.comment-vote-button{
+  margin: 0.8rem 0 0.3rem 0.5rem;
 }
 .vote-button:hover{
   cursor:pointer;
 }
 .true-vote-button{
-  background-color: rgb(93, 213, 253);
+  background-color: rgba(93, 213, 253, 0.623);
+}
+
+.comment-votes{
+  margin-left: 0.5rem;
+}
+.article-votes{
+  margin-right: 0.5rem;
 }

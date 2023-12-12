@@ -3,7 +3,8 @@ import { convertToDate, getProfilePictureByName } from "../utils/functions";
 
 export const CommentContainer = ({ comment }) => {
   const [commentImg, setCommentImg] = useState("");
-  const [isVoted, setIsVoted] = useState(false)
+  const [voteNumber, setVoteNumber] = useState(comment.votes)
+  const [isVoted, setIsVoted] = useState(false);
 
   useEffect(() => {
     getProfilePictureByName(comment.author).then((image) => {
@@ -24,9 +25,22 @@ export const CommentContainer = ({ comment }) => {
       </div>
       <div className="comment-bottom-section">
         <p className="comment-body">{comment.body}</p>
-        <button className={`vote-button ${isVoted?'true-vote-button':'false-vote-button'}`} onClick={handleVote}>
-          <img src="../../images/thumbs-up.png" className={`thumbs-up ${isVoted?'true-thumbs-up':'false-thumbs-up'}`}/>
-        </button>
+        <div className="comment-votes-section">
+          <button
+            className={`vote-button comment-vote-button ${
+              isVoted ? "true-vote-button" : "false-vote-button"
+            }`}
+            onClick={handleVote}
+          >
+            <img
+              src="../../images/thumbs-up.png"
+              className={`thumbs-up ${
+                isVoted ? "true-thumbs-up" : "false-thumbs-up"
+              }`}
+            />
+          </button>
+          <p className="comment-votes">({voteNumber})</p>
+        </div>
       </div>
     </div>
   );

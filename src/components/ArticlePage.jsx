@@ -10,6 +10,7 @@ export const ArticlePage = () => {
   const [article, setArticle] = useState({});
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isArticleVoted, setIsArticleVoted] = useState(false);
 
   useEffect(() => {
     getArticleById(articleId)
@@ -22,6 +23,10 @@ export const ArticlePage = () => {
       })
       .then(() => setIsLoading(false));
   }, []);
+
+  const handleVote = () => {
+    setIsArticleVoted(!isArticleVoted);
+  };
 
   if (isLoading) {
     return (
@@ -36,6 +41,17 @@ export const ArticlePage = () => {
       <div className="content-container">
         <div className="content-top">
           <BackButton />
+          <div className="article-votes-section">
+            <p className="article-votes">({article.votes})</p>
+            <button
+              className={`vote-button ${
+                isArticleVoted ? "true-vote-button" : "false-vote-button"
+              }`}
+              onClick={handleVote}
+            >
+              <img src="../../images/thumbs-up.png" />
+            </button>
+          </div>
         </div>
         <div className="content-bottom">
           <img src={article.article_img_url} className="article-page-image" />
