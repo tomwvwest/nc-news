@@ -34,7 +34,7 @@ export const HomePage = () => {
             </button>
           </Link>
         </div>
-        <div className="main-content-bottom">
+        <div className="content-bottom">
           <PrimaryArticleContainer primaryArticle={topArticles.primary}/>
           <SecondaryArticleContainer secondaryArticles={topArticles.secondary}/>
         </div>

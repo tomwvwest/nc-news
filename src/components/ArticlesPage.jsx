@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { getArticles } from "../utils/api";
 import { convertToDate } from "../utils/functions";
 import { SecondaryArticleContainer } from "./SecondaryArticleContainer";
+import { BackButton } from "./BackButton";
 
 export const ArticlesContainer = () => {
   const [articles, setArticles] = useState('');
@@ -27,11 +28,7 @@ export const ArticlesContainer = () => {
     <div className="main-body">
       <div className="content-container">
         <div className="content-top">
-          <Link to="/">
-            <div className="back-arrow">
-              <img src="../../images/back-arrow.png" alt="" />
-            </div>
-          </Link>
+          <BackButton/>
           <h2 className="content-header articles-content-header">Articles</h2>
         </div>
         <div className="main-content-bottom">
