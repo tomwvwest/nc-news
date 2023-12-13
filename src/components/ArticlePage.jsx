@@ -89,7 +89,7 @@ export const ArticlePage = () => {
           </p>
           <p className="article-page-body">{article.body}</p>
           <hr />
-          <CommentsSection comments={comments} />
+          <CommentsSection comments={comments} setComments={setComments}/>
         </div>
       </div>
     </div>
