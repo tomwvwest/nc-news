@@ -10,6 +10,8 @@ export const AddComment = ({ comments, setComments }) => {
   const [addComment, setAddComment] = useState("");
   const [currentArticleId, setCurrentArticleId] = useState("");
   const { articleId } = useParams();
+  const [isError, setIsError] = useState(false);
+  const [isPosted, setIsPosted] = useState(false);
 
   useEffect(() => {
     getProfilePictureByName(user).then((image) => {
@@ -23,30 +25,56 @@ export const AddComment = ({ comments, setComments }) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    postComment(currentArticleId, user, addComment).then((returnComment) => {
-      setComments([returnComment.comment, ...comments]);
+    const currentComments = comments;
+
+    const returnComment = {
+      author: user,
+      created_at: new Date().toISOString(),
+      body: addComment,
+      comment_id: currentComments.length,
+    };
+    if (!returnComment.body) {
+      setIsPosted(false);
+      setIsError(true);
+      return;
+    }
+    setComments([returnComment, ...currentComments]);
+
+    postComment(currentArticleId, user, addComment).then((addedComment) => {
+      setComments([addedComment.comment, ...currentComments]);
     });
+    setIsError(false);
+    setIsPosted(true);
     setAddComment("");
   };
 
   return (
     <div className="comment-container add-comment-container">
-      <img src={addCommentImg} className="comment-profile-image add-comment-profile-image" />
-      <form className="comment-form" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          className="comment-input"
-          placeholder="Add a comment..."
-          onChange={updateComment}
-          value={addComment}
+      <div className="add-comment-container-top">
+        <img
+          src={addCommentImg}
+          className="comment-profile-image add-comment-profile-image"
         />
-        <button className="send-comment-button">
-          <img
-            src="../../images/back-arrow.png"
-            className="send-comment-arrow"
+        <form className="comment-form" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            className="comment-input"
+            placeholder="Add a comment..."
+            onChange={updateComment}
+            value={addComment}
           />
-        </button>
-      </form>
+          <button className="send-comment-button">
+            <img
+              src="../../images/back-arrow.png"
+              className="send-comment-arrow"
+            />
+          </button>
+        </form>
+      </div>
+      <div className="add-comment-container-bottom">
+        <p>{isPosted ? "Comment posted" : null}</p>
+        <p>{isError ? "Please write a comment" : null}</p>
+      </div>
     </div>
   );
 };

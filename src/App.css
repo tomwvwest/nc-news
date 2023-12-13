@@ -251,10 +251,15 @@ hr {
   padding: 0.5rem;
   border-radius: 1rem;
 }
-.add-comment-container{
+.add-comment-container-top{
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+.add-comment-container-bottom{
+  text-align: end;
+  margin-top: 0.1rem;
+  opacity: 0.6;
 }
 .comment-form{
   flex-grow:1;
