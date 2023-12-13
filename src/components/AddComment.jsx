@@ -41,6 +41,8 @@ export const AddComment = ({ comments, setComments }) => {
         setError(null);
         setIsPosted(true);
       }).catch(() => {
+        setIsLoadingSend(null)
+        setIsPosted(null);
         setError('Error: please try again')
       });
       setAddComment("");
