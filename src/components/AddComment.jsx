@@ -10,7 +10,7 @@ export const AddComment = ({ comments, setComments }) => {
   const [addComment, setAddComment] = useState("");
   const [currentArticleId, setCurrentArticleId] = useState("");
   const { articleId } = useParams();
-  const [isError, setIsError] = useState(false);
+  const [error, setError] = useState('');
   const [isPosted, setIsPosted] = useState(false);
 
   useEffect(() => {
@@ -35,16 +35,18 @@ export const AddComment = ({ comments, setComments }) => {
     };
     if (!returnComment.body) {
       setIsPosted(false);
-      setIsError(true);
+      setError('Please write a comment');
       return;
     }
     setComments([returnComment, ...currentComments]);
 
     postComment(currentArticleId, user, addComment).then((addedComment) => {
       setComments([addedComment.comment, ...currentComments]);
+      setError(null);
+      setIsPosted(true);
+    }).catch(() => {
+      setError('Error: please try again')
     });
-    setIsError(false);
-    setIsPosted(true);
     setAddComment("");
   };
 
@@ -56,7 +58,7 @@ export const AddComment = ({ comments, setComments }) => {
           className="comment-profile-image add-comment-profile-image"
         />
         <form className="comment-form" onSubmit={handleSubmit}>
-          <input
+          <textarea
             type="text"
             className="comment-input"
             placeholder="Add a comment..."
@@ -73,7 +75,7 @@ export const AddComment = ({ comments, setComments }) => {
       </div>
       <div className="add-comment-container-bottom">
         <p>{isPosted ? "Comment posted" : null}</p>
-        <p>{isError ? "Please write a comment" : null}</p>
+        <p>{error ? error : null}</p>
       </div>
     </div>
   );
