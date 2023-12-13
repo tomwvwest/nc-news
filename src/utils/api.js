@@ -55,3 +55,9 @@ export const postComment = (id, username, body) => {
       return data
     });
 }
+
+export const deleteCommentById = (id) => {
+  return axios.delete(`https://its-the-news-2.onrender.com/api/comments/${id}`).then(res => {
+    console.log(res)
+  })
+}

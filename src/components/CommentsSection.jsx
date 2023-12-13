@@ -33,8 +33,8 @@ export const CommentsSection = ({ comments, setComments }) => {
           <AddComment comments={comments} setComments={setComments} />
           {comments.map((comment) => {
             return (
-              <div key={comment.comment_id} className="comment-container">
-                <CommentContainer commentData={comment} />
+              <div key={comment.comment_id} className="comments-outer">
+                <CommentContainer commentData={comment} setComments={setComments}/>
               </div>
             );
           })}

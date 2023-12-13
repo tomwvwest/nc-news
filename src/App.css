@@ -57,7 +57,7 @@
   border: 1px solid black;
   border-radius: 100rem;
 }
-.header-img:hover{
+.header-img:hover {
   opacity: 0.6;
 }
 
@@ -244,6 +244,9 @@ hr {
   flex-direction: column;
   align-items: center;
 }
+.comments-outer {
+  width: 100%;
+}
 .comment-container {
   background-color: #efe7e5;
   width: 95%;
@@ -251,12 +254,12 @@ hr {
   padding: 0.5rem;
   border-radius: 1rem;
 }
-.add-comment-container-top{
+.add-comment-container-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.add-comment-container-bottom{
+.add-comment-container-bottom {
   text-align: end;
   margin-top: 0.1rem;
   opacity: 0.6;
@@ -264,17 +267,17 @@ hr {
   font-size: 1.1rem;
   font-weight: 700;
 }
-.comment-posted{
+.comment-posted {
   color: green;
 }
-.error-posted{
-  color:red;
+.error-posted {
+  color: red;
 }
-.comment-form{
-  flex-grow:1;
-  display: flex ;
+.comment-form {
+  flex-grow: 1;
+  display: flex;
 }
-.comment-input{
+.comment-input {
   width: 15rem;
   height: 3rem;
   background-color: #f2f4f6;
@@ -285,10 +288,10 @@ hr {
   font-size: 1rem;
   resize: none;
 }
-.comment-input:focus{
-  outline:none;
+.comment-input:focus {
+  outline: none;
 }
-.send-comment-button{
+.send-comment-button {
   display: flex;
   align-items: center;
   align-self: center;
@@ -297,15 +300,15 @@ hr {
   transition: 0.1s;
   width: fit-content;
   height: fit-content;
-  border:none;
+  border: none;
   background: none;
 }
-.send-comment-button:hover{
+.send-comment-button:hover {
   background-color: #2b2a4c50;
-  cursor:pointer;
+  cursor: pointer;
 }
 
-.send-comment-arrow{
+.send-comment-arrow {
   transform: rotate(180deg);
 }
 
@@ -322,11 +325,11 @@ hr {
   background-color: white;
 }
 
-.comment-profile-image:hover{
-  opacity: 0.6
+.comment-profile-image:hover {
+  opacity: 0.6;
 }
-.add-comment-profile-image:hover{
-  opacity:1;
+.add-comment-profile-image:hover {
+  opacity: 1;
 }
 
 .comment-author {
@@ -355,18 +358,25 @@ hr {
 .show-comments {
   transform: rotate(270deg);
 }
-.no-comments-message{
+.no-comments-message {
   margin-left: 0.7rem;
   font-weight: 400;
   font-size: 1rem;
   align-self: end;
   opacity: 0.6;
 }
-.comment-votes-section,
+.comment-votes-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.comment-votes-left,
 .article-votes-section {
   display: flex;
   align-items: center;
 }
+
 .vote-button {
   background-color: #f2f4f6;
   width: 3rem;
@@ -388,25 +398,37 @@ hr {
 .comment-votes {
   margin-left: 0.5rem;
 }
+.delete-loading, .error-posted{
+  opacity: 0.6;
+  font-style: italic;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-align: right;
+}
+.successful-delete-loading{
+  color: green;
+  text-align: left;
+  margin-left: 1rem;
+}
 .article-votes {
   margin-right: 0.5rem;
 }
-.profile-content-container{
+.profile-content-container {
   display: flex;
   flex-direction: column;
 }
 .profile-content-header {
   font-style: italic;
   font-size: 2rem;
-  padding: 0 1.5rem 1.5rem 1.5rem;;
+  padding: 0 1.5rem 1.5rem 1.5rem;
 }
-.profile-sub-header{
-  margin-left:1.7rem;
+.profile-sub-header {
+  margin-left: 1.7rem;
   font-size: 1.2rem;
   text-decoration: underline;
-  font-weight: 700
+  font-weight: 700;
 }
-.profile-image{
+.profile-image {
   align-self: center;
   border-radius: 100rem;
   width: 11rem;
