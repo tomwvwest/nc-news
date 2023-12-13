@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { CommentContainer } from "./CommentContainer";
+import { AddComment } from "./AddComment";
 
-export const CommentsSection = ({ comments }) => {
+export const CommentsSection = ({ comments, setComments }) => {
   const [showComments, setShowComments] = useState(false);
 
   const handleDropDown = () => {
@@ -26,6 +27,7 @@ export const CommentsSection = ({ comments }) => {
       </h3>
       {showComments ? (
         <div className="comments-section">
+          <AddComment comments={comments} setComments={setComments}/>
           {comments.map((comment) => {
             return (
               <div key={comment.comment_id} className="comment-container">

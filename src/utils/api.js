@@ -46,3 +46,12 @@ export const patchArticleVotesById = (id, num) => {
       console.log(data);
     });
 }
+
+export const postComment = (id, username, body) => {
+  return axios
+    .post(`https://its-the-news-2.onrender.com/api/articles/${id}/comments`, {username, body})
+    .then(({ data }) => {
+      console.log(data);
+      return data
+    });
+}
