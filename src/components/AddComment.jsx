@@ -12,6 +12,7 @@ export const AddComment = ({ comments, setComments }) => {
   const { articleId } = useParams();
   const [error, setError] = useState('');
   const [isPosted, setIsPosted] = useState(false);
+  const [isLoadingSend, setIsLoadingSend] = useState(null)
 
   useEffect(() => {
     getProfilePictureByName(user).then((image) => {
@@ -26,6 +27,7 @@ export const AddComment = ({ comments, setComments }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const currentComments = comments;
+    setIsLoadingSend('loading...')
 
     const returnComment = {
       author: user,
@@ -35,6 +37,7 @@ export const AddComment = ({ comments, setComments }) => {
     };
     if (!returnComment.body) {
       setIsPosted(false);
+      setIsLoadingSend(null)
       setError('Please write a comment');
       return;
     }
@@ -42,6 +45,7 @@ export const AddComment = ({ comments, setComments }) => {
 
     postComment(currentArticleId, user, addComment).then((addedComment) => {
       setComments([addedComment.comment, ...currentComments]);
+      setIsLoadingSend(null)
       setError(null);
       setIsPosted(true);
     }).catch(() => {
@@ -76,6 +80,7 @@ export const AddComment = ({ comments, setComments }) => {
       <div className="add-comment-container-bottom">
         <p>{isPosted ? "Comment posted" : null}</p>
         <p>{error ? error : null}</p>
+        <p>{isLoadingSend ? isLoadingSend : null}</p>
       </div>
     </div>
   );
