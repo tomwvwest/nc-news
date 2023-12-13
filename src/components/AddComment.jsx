@@ -26,32 +26,26 @@ export const AddComment = ({ comments, setComments }) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    const currentComments = comments;
-    setIsLoadingSend('loading...')
-
-    const returnComment = {
-      author: user,
-      created_at: new Date().toISOString(),
-      body: addComment,
-      comment_id: currentComments.length,
-    };
-    if (!returnComment.body) {
-      setIsPosted(false);
-      setIsLoadingSend(null)
+    if(!addComment){
       setError('Please write a comment');
-      return;
-    }
-    setComments([returnComment, ...currentComments]);
-
-    postComment(currentArticleId, user, addComment).then((addedComment) => {
-      setComments([addedComment.comment, ...currentComments]);
+      setIsPosted(null)
       setIsLoadingSend(null)
-      setError(null);
-      setIsPosted(true);
-    }).catch(() => {
-      setError('Error: please try again')
-    });
-    setAddComment("");
+    } else{
+      setIsPosted(null);
+      setError(null)
+      setIsLoadingSend('Posting...');
+
+      postComment(currentArticleId, user, addComment).then((addedComment) => {
+        setComments([addedComment.comment, ...comments]);
+        setIsLoadingSend(null)
+        setError(null);
+        setIsPosted(true);
+      }).catch(() => {
+        setError('Error: please try again')
+      });
+      setAddComment("");
+    }
+    
   };
 
   return (
@@ -78,8 +72,8 @@ export const AddComment = ({ comments, setComments }) => {
         </form>
       </div>
       <div className="add-comment-container-bottom">
-        <p>{isPosted ? "Comment posted" : null}</p>
-        <p>{error ? error : null}</p>
+        <p className="comment-posted">{isPosted ? "Comment posted" : null}</p>
+        <p className="error-posted">{error ? error : null}</p>
         <p>{isLoadingSend ? isLoadingSend : null}</p>
       </div>
     </div>
