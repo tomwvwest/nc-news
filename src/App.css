@@ -57,6 +57,9 @@
   border: 1px solid black;
   border-radius: 100rem;
 }
+.header-img:hover{
+  opacity: 0.6;
+}
 
 /* ------------main-container-------------- */
 .main-body {
@@ -317,7 +320,7 @@ hr {
   cursor: pointer;
 }
 .true-vote-button {
-  background-color: rgba(93, 213, 253, 0.623);
+  background-color: rgba(67, 238, 98, 0.623);
 }
 
 .comment-votes {
