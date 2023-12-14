@@ -4,6 +4,7 @@ import {  getArticlesByQuery } from "../utils/api";
 import { SecondaryArticleContainer } from "./SecondaryArticleContainer";
 import { BackButton } from "./BackButton";
 import { capitaliseFirstLetter } from "../utils/functions";
+import { SortButton } from "./SortButton";
 
 export const ArticlesContainer = () => {
   const [articles, setArticles] = useState('');
@@ -32,6 +33,7 @@ export const ArticlesContainer = () => {
         <div className="content-top">
           <BackButton/>
           <h2 className="content-header articles-content-header">Articles{topic? `: ${capitaliseFirstLetter( topic)}`: null}</h2>
+          <SortButton articles={articles} setArticles={setArticles}/>
         </div>
         <div className="content-bottom">
           <SecondaryArticleContainer secondaryArticles={articles}/>

@@ -476,3 +476,27 @@ hr {
 .topic-container:hover .topic-description{
   opacity: 1;
 }
+
+/* ----------sort --------- */
+.sort-button-container{
+  position: relative;
+}
+.sort-button{
+  width:10rem;;
+  font-size: 1rem;
+  padding: 0.5rem;
+}
+.drop-down-list{
+  background-color: lightgrey;
+  list-style: none;
+  position: absolute;
+  padding: 0.2rem;
+  right: 0rem;
+}
+.drop-down-list > li{
+  margin-bottom:0.2rem;
+  border-bottom: 1px black solid;
+}
+.asc-sort, .desc-sort{
+  font-weight: 700
+}
