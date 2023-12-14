@@ -3,6 +3,7 @@ import { convertToDate, findTopArticles } from "../utils/functions";
 import { Link } from "react-router-dom";
 import { PrimaryArticleContainer } from "./PrimaryArticleContainer";
 import { SecondaryArticleContainer } from "./SecondaryArticleContainer";
+import { TopicsButton } from "./TopicsButton";
 
 export const HomePage = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -28,6 +29,7 @@ export const HomePage = () => {
       <div className="content-container">
         <div className="content-top">
           <h2 className="content-header">Trending</h2>
+          <TopicsButton />
           <Link to="/articles">
             <button className="view-articles-button button">
               All Articles
@@ -35,8 +37,10 @@ export const HomePage = () => {
           </Link>
         </div>
         <div className="content-bottom">
-          <PrimaryArticleContainer primaryArticle={topArticles.primary}/>
-          <SecondaryArticleContainer secondaryArticles={topArticles.secondary}/>
+          <PrimaryArticleContainer primaryArticle={topArticles.primary} />
+          <SecondaryArticleContainer
+            secondaryArticles={topArticles.secondary}
+          />
         </div>
       </div>
     </div>

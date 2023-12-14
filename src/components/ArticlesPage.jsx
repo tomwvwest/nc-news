@@ -1,16 +1,18 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { getArticles } from "../utils/api";
-import { convertToDate } from "../utils/functions";
+import { useSearchParams } from "react-router-dom";
+import { getArticles, getArticlesByQuery } from "../utils/api";
 import { SecondaryArticleContainer } from "./SecondaryArticleContainer";
 import { BackButton } from "./BackButton";
+import { capitaliseFirstLetter } from "../utils/functions";
 
 export const ArticlesContainer = () => {
   const [articles, setArticles] = useState('');
   const [isLoading, setIsLoading] = useState(true);
+  const [searchParams, setSearchParams] = useSearchParams()
+  const topic = searchParams.get('topic')
 
   useEffect(() => {
-    getArticles().then((res) => {
+    getArticlesByQuery('topic', topic).then((res) => {
       setArticles(res)
       setIsLoading(false)
     })
@@ -29,9 +31,9 @@ export const ArticlesContainer = () => {
       <div className="content-container">
         <div className="content-top">
           <BackButton/>
-          <h2 className="content-header articles-content-header">Articles</h2>
+          <h2 className="content-header articles-content-header">Articles{topic? `: ${capitaliseFirstLetter( topic)}`: null}</h2>
         </div>
-        <div className="main-content-bottom">
+        <div className="content-bottom">
           <SecondaryArticleContainer secondaryArticles={articles}/>
         </div>
       </div>

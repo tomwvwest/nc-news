@@ -1,12 +1,11 @@
-import { useState } from "react";
 import "./App.css";
 import { Header } from "./components/Header";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HomePage } from "./components/HomePage";
 import { ArticlesContainer } from "./components/ArticlesPage";
 import { ArticlePage } from "./components/ArticlePage";
-import { UserProvider } from "./contexts/UserContext";
 import { ProfilePage } from "./components/ProfilePage";
+import { TopicsPage } from "./components/TopicsPage";
 
 function App() {
   return (
@@ -17,6 +16,7 @@ function App() {
           <Route path="/articles" element={<ArticlesContainer />}></Route>
           <Route path="/articles/:articleId" element={<ArticlePage />}></Route>
           <Route path="/profile/:username" element={<ProfilePage />}></Route>
+          <Route path="/topics" element={<TopicsPage />}></Route>
         </Routes>
       </BrowserRouter>
   );
