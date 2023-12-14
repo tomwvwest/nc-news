@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { getArticles, getArticlesByQuery } from "../utils/api";
+import {  getArticlesByQuery } from "../utils/api";
 import { SecondaryArticleContainer } from "./SecondaryArticleContainer";
 import { BackButton } from "./BackButton";
 import { capitaliseFirstLetter } from "../utils/functions";

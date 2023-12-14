@@ -8,19 +8,11 @@ export const getArticles = () => {
     });
 };
 export const getArticlesByQuery = (query, value) => {
-  if (value && query) {
     return axios
-      .get(`https://its-the-news-2.onrender.com/api/articles?${query}=${value}`)
+      .get(`https://its-the-news-2.onrender.com/api/articles`, {params: {query: value}})
       .then(({ data }) => {
         return data.articles;
       });
-  } else {
-    return axios
-      .get("https://its-the-news-2.onrender.com/api/articles")
-      .then(({ data }) => {
-        return data.articles;
-      });
-  }
 };
 
 export const getArticleById = (id) => {
@@ -71,7 +63,6 @@ export const postComment = (id, username, body) => {
       body,
     })
     .then(({ data }) => {
-      console.log(data);
       return data;
     });
 };
