@@ -5,7 +5,7 @@ export const TopicContainer = ({ topic }) => {
   return (
       <Link to={`/articles?topic=${topic.slug}`}>
         <img
-          src={`../../images/${topic.slug}-topic.jpeg`}
+          src={`../images/${topic.slug}-topic.jpeg`}
           className="topic-image"
         />
         <h2 className="topic-header">{capitaliseFirstLetter(topic.slug)}</h2>
