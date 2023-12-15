@@ -17,10 +17,22 @@
   padding: 0.1rem;
   transition: 0.1s;
   width: fit-content;
+  height: fit-content;
 }
 .back-arrow:hover {
   background-color: #2b2a4c50;
   cursor: pointer;
+}
+.back-button-div{
+  padding-top: 2rem;
+  margin-left: 3rem;
+  display: flex;
+  align-items: center;
+  font-size: 1.3rem;
+}
+.error-main-body{
+  display: flex;
+  flex-direction: column;
 }
 
 .header-container {
@@ -90,7 +102,10 @@
 
 .content-header {
   color: #b31312;
-  flex-grow: 1;
+  /* flex-grow: 1; */
+}
+.home-content-header{
+  flex-grow:1;
 }
 .button {
   background-color: #343186;
