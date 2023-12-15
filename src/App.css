@@ -482,8 +482,8 @@ hr {
   position: relative;
 }
 .sort-button{
-  width:10rem;;
-  font-size: 1rem;
+  width:10.3rem;;
+  font-size: 0.9rem;
   padding: 0.5rem;
 }
 .drop-down-list{
@@ -491,12 +491,31 @@ hr {
   list-style: none;
   position: absolute;
   padding: 0.2rem;
-  right: 0rem;
+  right: 0.3rem;
+  width: 9.2rem;
+  border-radius: 0.6rem;
 }
-.drop-down-list > li{
+.drop-down-list-item{
   margin-bottom:0.2rem;
   border-bottom: 1px black solid;
+  font-size: 1.1rem;
+  padding: 0.1rem;
+}
+.drop-down-list-item:hover{
+  cursor: pointer;
+  opacity: 0.7;
 }
 .asc-sort, .desc-sort{
-  font-weight: 700
+  font-weight: 700;
+}
+.selected-sort{
+  font-weight: 700;
+}
+.drop-down-list-title{
+  font-size: 1.3rem;
+  font-weight: 700;
+  border-bottom: 2px black solid;
+}
+.drop-down-list-title-order{
+  margin-top: 1rem
 }
