@@ -8,6 +8,7 @@ import {
 import { capitaliseFirstLetter, convertToDate } from "../utils/functions";
 import { BackButton } from "./BackButton";
 import { CommentsSection } from "./CommentsSection";
+import { ErrorPage } from "./ErrorPage";
 
 export const ArticlePage = () => {
   const { articleId } = useParams();
@@ -17,6 +18,7 @@ export const ArticlePage = () => {
   const [isArticleVoted, setIsArticleVoted] = useState(false);
   const [articleVotes, setArticleVotes] = useState("");
   const [err, setErr] = useState(null);
+  const[urlError, setUrlError] = useState(null)
 
   useEffect(() => {
     getArticleById(articleId)
@@ -28,7 +30,10 @@ export const ArticlePage = () => {
       .then((data) => {
         setComments(data);
       })
-      .then(() => setIsLoading(false));
+      .then(() => setIsLoading(false)).catch(err => {
+        setIsLoading(false)
+        setUrlError(true)
+      });
   }, []);
 
   const handleVote = () => {
@@ -52,8 +57,8 @@ export const ArticlePage = () => {
     );
   }
 
-  if (err) {
-    console.log(err);
+  if (urlError) {
+    return <ErrorPage/>
   }
 
   return (

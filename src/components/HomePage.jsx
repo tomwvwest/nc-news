@@ -28,7 +28,7 @@ export const HomePage = () => {
     <div className="main-body">
       <div className="content-container">
         <div className="content-top">
-          <h2 className="content-header">Trending</h2>
+          <h2 className="content-header home-content-header">Trending</h2>
           <TopicsButton />
           <Link to="/articles">
             <button className="view-articles-button button">
