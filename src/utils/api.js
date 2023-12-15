@@ -9,7 +9,7 @@ export const getArticles = () => {
 };
 export const getArticlesByQuery = (query, value) => {
     return axios
-      .get(`https://its-the-news-2.onrender.com/api/articles`, {params: {query: value}})
+      .get(`https://its-the-news-2.onrender.com/api/articles`, {params: {[query]: value}})
       .then(({ data }) => {
         return data.articles;
       });
